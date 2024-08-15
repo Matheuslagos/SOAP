@@ -1,10 +1,12 @@
 from zeep import Client
 
-# Crie uma instância do cliente SOAP usando o WSDL
-client = Client('http://localhost/calculator.wsdl')
+# Endereço do WSDL
+wsdl = 'http://localhost/server.wsdl'
 
-# Chame o método remoto
-result = client.service.addNumbers(3, 5)
+# Cria o cliente
+client = Client(wsdl=wsdl)
 
-# Exiba o resultado
-print(f"A soma é: {result}")
+# Chama o método 'add' do servidor SOAP
+result = client.service.add(5, 3)
+
+print(f'Resultado da soma: {result}')
